@@ -1,7 +1,7 @@
 {
   "name": "homebridge-irrigation-system-platform",
   "displayName": "Homebridge Irrigation System Domi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Homebridge platform for an irrigation system using Blynk.",
   "main": "src/index.js",
 
