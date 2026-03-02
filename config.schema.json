@@ -1,81 +1,78 @@
 {
-  "pluginAlias": "irrigation-system",
-  "pluginType": "accessory",
-  "headerDisplay": "Create a security system accessory that can be triggered by HomeKit sensors.",
+  "pluginAlias": "IrrigationSystemDomi",
+  "pluginType": "platform",
+  "headerDisplay": "Irrigation System",
+
   "schema": {
     "title": "Irrigation System",
     "type": "object",
+    "required": ["name", "ip", "token", "pin"],
     "properties": {
       "name": {
         "title": "Name",
         "type": "string",
-        "default": "Irrigation System",
-        "required": true
+        "default": "Irrigation System"
       },
-	  "ip": {
-        "title": "Blynk Server Adresse",
+      "ip": {
+        "title": "Blynk Server Address",
         "type": "string",
-        "placeholder": "Put ip here",
-        "required": true
+        "placeholder": "192.168.2.47"
       },
-	  "token": {
+      "token": {
         "title": "Token",
         "type": "string",
-        "placeholder": "Put token here",
-        "required": true
+        "placeholder": "Put token here"
       },
-	  "pin": {
+      "pin": {
         "title": "Virtual Pin",
         "type": "string",
-        "placeholder": "Put pin here",
-        "required": true
+        "placeholder": "Put pin here"
       },
-	  "zones": {
-		"title": "Zone_1",
-		"type": "array",
-		"items": {
-		  "title": "Zone",
-		  "type": "object",
-		  "properties": {
-			"zonename": {
-			  "title": "ZoneName",
-			  "type": "string",
-			  "maxLength": 16,
-			  "placeholder": "zone name"
-			},
-			"setDuration": {
-			  "title": "Set Duration Time",
-			  "type": "number",
-			  "description": "Default zone duration in minutes [20][0-120]",
-			  "maximum": 120,
-			  "exclusiveMinimum": 0
-			}
-		  }
-		}
-	  }
-	  
+      "zones": {
+        "title": "Zones",
+        "type": "array",
+        "items": {
+          "title": "Zone",
+          "type": "object",
+          "required": ["zonename", "setDuration"],
+          "properties": {
+            "zonename": {
+              "title": "Zone Name",
+              "type": "string",
+              "maxLength": 16,
+              "placeholder": "zone name"
+            },
+            "setDuration": {
+              "title": "Set Duration Time (minutes)",
+              "type": "number",
+              "description": "Default zone duration in minutes [20][1-120]",
+              "maximum": 120,
+              "minimum": 1
+            }
+          }
+        }
+      }
     }
   },
+
   "layout": [
     "name",
-	"ip",
-	"token",
-	"pin",
-	{
+    "ip",
+    "token",
+    "pin",
+    {
       "type": "fieldset",
       "title": "Zones",
-      "description": "Play sounds on your connected speakers to notify events.",
       "expandable": true,
       "expanded": false,
       "items": [
-        
         {
           "key": "zones",
           "type": "tabarray",
-          "title": "{{ value.zonename || 'Zone ' + $index }}",
+          "title": "{{ value.zonename || ('Zone ' + ($index)) }}",
           "items": [
             "zones[].zonename",
-			"zones[].setDuration"
+            "zones[].setDuration"
           ]
         }
       ]
