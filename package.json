@@ -1,41 +1,62 @@
 {
-  "name": "homebridge-irrigation-system",
-  "displayName": "Homebridge Irrigation System",
-  "version": "1.0.1",
-  "description": "System Irrigation",
+  "name": "homebridge-irrigation-system-platform",
+  "displayName": "Homebridge Irrigation System Domi",
+  "version": "1.0.6",
+  "description": "Homebridge platform for an irrigation system using Blynk.",
   "main": "src/index.js",
+
+  "homebridge": {
+    "platforms": [
+      {
+        "platform": "IrrigationSystemDomi",
+        "name": "Homebridge Irrigation System Domi"
+      }
+    ],
+    "icon": "logo.png"
+  },
+
   "scripts": {
-    "test": "npm install -g && homebridge -I -D",
+    "test": "homebridge -I -D",
     "build": "exit 0"
   },
+
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Domi-Git-Hub/homebridge-irrigation-system.git"
+    "url": "git+https://github.com/Domi-Git-Hub/homebridge-irrigation-system-platform.git"
   },
+
   "keywords": [
     "homebridge-plugin",
     "homebridge",
     "homekit",
-    "irrigation"
+    "irrigation-domi",
+    "irrigation-system",
+    "sprinkler",
+    "watering",
+    "blynk",
+    "domi"
   ],
+
   "author": "Domi",
   "license": "ISC",
+
   "bugs": {
-    "url": "https://github.com/Domi-Git-Hub/homebridge-irrigation-system/issues"
+    "url": "https://github.com/Domi-Git-Hub/homebridge-irrigation-system-platform/issues"
   },
-  "homepage": "https://github.com/Domi-Git-Hub/homebridge-irrigation-system/blob/main/README.md",
+
+  "homepage": "https://github.com/Domi-Git-Hub/homebridge-irrigation-system-platform#readme",
+
   "engines": {
-    "node": ">=10.x",
-    "homebridge": ">=0.2.0"
+    "node": ">=18.0.0",
+    "homebridge": ">=1.6.0"
   },
+
   "dependencies": {
-    "express": "^4.17.1",
-    "express-rate-limit": "^6.2.1",
     "node-fetch": "^2.6.7",
     "node-persist": "^3.0.5"
   },
+
   "devDependencies": {
     "eslint": "^8.0.0"
   }
-  
 }
